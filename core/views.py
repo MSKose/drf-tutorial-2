@@ -4,6 +4,7 @@ from django.shortcuts import render
 from django.http import JsonResponse
 
 # 3rd party imports
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
@@ -23,6 +24,10 @@ from .models import Post
 
 #! 3rd party DRF
 class TestView(APIView):
+
+    permission_classes = [IsAuthenticated] # permission_classes is a class based view DRF attribute. And it takes a list or a tuple 
+
+
     def get (self, request, *args, **kwargs):
         # data = {
         # 'name': 'john',

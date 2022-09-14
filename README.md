@@ -5,7 +5,7 @@
 
 This is my second attempt to create an api. I saw the difference between the bult-in api handling and the 3rd party DRF way
 
-### Stack
+### Stack & Tools
 
 - Django
 - DRF (Drango Rest Framework)

@@ -43,6 +43,13 @@ INSTALLED_APPS = [
 
     'core',
     'rest_framework',
+    # if you check admin page you'll see we don't have any tokens generated. To have one use "python manage.py drf_create_token <username>" command. Now head and in 
+    # the Authoriztion tab select API Key and as the Key say 'Authorization' and as a Value say 'Token <token>' (basically; Token, space, and the token). You'll no 
+    # longer get "detail": "Authentication credentials were not provided.". But this is how you could get token from admin page, right? And, say, you wanted to pass 
+    # the token to the user, then you'd want to see the urls.py line 10
+    'rest_framework.authtoken', 
+
+    'dj_rest_auth',
 ]
 
 MIDDLEWARE = [
@@ -127,3 +134,12 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+
+#! DRF settings
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',  # this is one way of authenticating our users. By default Django uses BasicAuthentication and SessionAuthentication. We also need to add 'rest_framework.authtoken' to INSTALLED_APPS
+    ]
+}
